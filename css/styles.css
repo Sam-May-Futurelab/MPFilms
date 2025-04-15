@@ -273,6 +273,67 @@ img {
     transform: translateY(-2px);
 }
 
+/* Button Water Ripple Hover Effects */
+.btn,
+.btn-outline,
+.btn-primary,
+.btn-white {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover,
+.btn-outline:hover,
+.btn-primary:hover,
+.btn-white:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 72, 100, 0.2);
+}
+
+/* Ripple effect */
+.btn::after,
+.btn-outline::after,
+.btn-primary::after,
+.btn-white::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250%;
+    height: 250%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.8s, opacity 0.8s;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.btn:hover::after,
+.btn-outline:hover::after,
+.btn-primary:hover::after,
+.btn-white:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* Special gold button ripple */
+.btn-gold::after,
+.btn-accent-gold::after {
+    background: radial-gradient(circle, rgba(255, 240, 180, 0.3) 0%, rgba(255,255,255,0) 70%);
+}
+
+/* Special styling for product cards */
+.product-card .btn {
+    transition: all 0.4s ease;
+}
+
+.product-card .btn:hover {
+    transform: scale(1.05) translateY(-2px);
+}
+
 /* Hero Button Styles */
 .hero-buttons {
     display: flex;
