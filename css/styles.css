@@ -399,16 +399,33 @@ img {
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    margin-bottom: 30px;
+}
+
+/* Feature Card Image Enhancement - Increased Size */
+
+.feature-card img {
+    width: 100%;
+    height: 400px; /* Increased from 300px to 400px */
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border-radius: 6px 6px 0 0;
+}
+
+/* Add hover effect for feature images */
+.feature-card:hover img {
+    transform: scale(1.03);
+}
+
+/* Ensure responsive design maintains proper proportions */
+@media (max-width: 768px) {
+    .feature-card img {
+        height: 300px; /* Increased from 250px to 300px for mobile */
+    }
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
-}
-
-.feature-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
 }
 
 .feature-content {
@@ -1857,6 +1874,18 @@ img {
 
 /* Custom Marine-Themed Scrollbar */
 
+/* Adjusted size for yacht-application image - proportional reduction */
+.section-water .about-image {
+    max-width: 85%;  /* Reduce to 85% of container width */
+    margin: 0 auto;  /* Center the image container */
+}
+
+.section-water .about-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
 /* Webkit browsers (Chrome, Safari, newer Edge) */
 ::-webkit-scrollbar {
     width: 12px;
@@ -2035,4 +2064,27 @@ img {
 
 .btn:hover::before {
     left: 100%;
+}
+
+/* Footer link visibility improvement */
+.footer-links a,
+.contact-info a,
+.footer-bottom a {
+    color: white; /* Changed from rgba(255,255,255,0.8) to full white */
+    text-decoration: none;
+    font-weight: 500; /* Added font weight for better visibility */
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover,
+.contact-info a:hover,
+.footer-bottom a:hover {
+    color: var(--accent-color); /* Changed hover color to accent color for better contrast */
+    text-decoration: underline;
+}
+
+/* Specific styling for email in footer */
+.contact-info .email-link {
+    color: white;
+    font-weight: 500;
 }
