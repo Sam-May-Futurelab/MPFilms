@@ -254,6 +254,24 @@ img {
     transform: translateY(-2px);
 }
 
+/* Hero Button Styles */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-outline-light {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 /* Features Section */
 .features {
     padding: 5rem 0;
