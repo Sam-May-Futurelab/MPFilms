@@ -147,4 +147,18 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Scroll progress indicator
+    const scrollProgress = document.querySelector('.scroll-progress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', () => {
+            const totalHeight = document.body.scrollHeight - window.innerHeight;
+            const progress = (window.pageYOffset / totalHeight) * 100;
+            scrollProgress.style.width = `${progress}%`;
+            
+            // Add wave effect on scroll
+            const waveOffset = Math.sin(progress / 10) * 3;
+            scrollProgress.style.height = `${3 + waveOffset}px`;
+        });
+    }
 });

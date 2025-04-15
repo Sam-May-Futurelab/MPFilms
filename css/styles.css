@@ -18,6 +18,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #0a3d62 #f1f2f6;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -1847,4 +1853,39 @@ img {
     .use-cases-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Custom Marine-Themed Scrollbar */
+
+/* Webkit browsers (Chrome, Safari, newer Edge) */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f2f6;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #0a3d62 0%, #3c6382 100%);
+    border-radius: 10px;
+    border: 2px solid #f1f2f6;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #0a3d62 0%, #60a3bc 100%);
+}
+
+/* Scrollbar progress indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0a3d62, #60a3bc);
+    z-index: 9999;
+    width: 0%;
+    transition: width 0.1s ease;
 }
