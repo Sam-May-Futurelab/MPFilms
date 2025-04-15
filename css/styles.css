@@ -236,7 +236,7 @@ img {
 .hero {
     position: relative;
     height: 80vh;
-    background: linear-gradient(rgba(10, 61, 98, 0.7), rgba(10, 61, 98, 0.7)), url('../images/yacht-hero.jpg');
+    background: url('../images/yacht-hero.jpeg');
     background-size: cover;
     background-position: center;
     color: white;
