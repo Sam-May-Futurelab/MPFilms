@@ -1,4 +1,6 @@
 /* Base Styles & Typography */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
 :root {
     --primary-color: #0a3d62; /* Deep navy blue */
     --secondary-color: #3c6382; /* Medium blue */
@@ -6,6 +8,10 @@
     --light-color: #f1f2f6; /* Off-white */
     --dark-color: #1e272e; /* Almost black */
     --text-color: #333; /* Dark gray for text */
+    
+    /* Typography */
+    --heading-font: 'Poppins', 'Helvetica Neue', sans-serif;
+    --body-font: 'Inter', 'Helvetica Neue', sans-serif;
 }
 
 * {
@@ -15,10 +21,11 @@
 }
 
 body {
-    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    font-family: var(--body-font);
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--light-color);
+    letter-spacing: 0.01em;
 }
 
 .container {
@@ -28,14 +35,26 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+    font-family: var(--heading-font);
     margin-bottom: 1rem;
     color: var(--primary-color);
     line-height: 1.3;
+    letter-spacing: 0.02em;
+    font-weight: 600;
+}
+
+h1 {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+h2 {
+    font-weight: 600;
 }
 
 p {
     margin-bottom: 1.5rem;
+    letter-spacing: 0.01em;
 }
 
 a {
@@ -282,6 +301,20 @@ img {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.2rem;
+    letter-spacing: 0.03em;
+    font-weight: 700;
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+    transform: translateX(-50%);
 }
 
 .features-grid {
@@ -512,6 +545,7 @@ img {
     font-size: 1.2rem;
     color: var(--secondary-color);
     font-style: italic;
+    letter-spacing: 0.02em;
 }
 
 .article-content {
