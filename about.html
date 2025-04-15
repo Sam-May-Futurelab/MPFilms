@@ -21,15 +21,18 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+    
     <!-- Header Include -->
     <div id="header-include"></div>
     
     <!-- Page Banner -->
     <section class="page-banner">
         <div class="container">
-            <h1>About Us</h1>
+            <h1 class="fade-in">About Us</h1>
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
+                <ol class="breadcrumb fade-in">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">About</li>
                 </ol>
@@ -43,10 +46,10 @@
         <section class="about-section">
             <div class="container">
                 <div class="about-content">
-                    <div class="about-image">
+                    <div class="about-image fade-in-left">
                         <img src="images/cornwall-coast.jpg" alt="Cornwall Coast with Boats">
                     </div>
-                    <div class="about-text">
+                    <div class="about-text fade-in-right">
                         <h2>Our Story</h2>
                         <p>Based in Cornwall, with many years of experience in the marine industry, the team at MPF are working in partnership with Nitto, a manufacturer and provider of products and technical solutions to many industries, including aerospace, automotive and now marine, throughout the world.</p>
                         <p>Including low-weight vibration and noise-damping solutions to surface protection products with UV resistance proven for up to 12 months, with no residue upon removal, thanks to their advanced adhesive technology - Nitto are world leaders in their field.</p>
@@ -61,11 +64,11 @@
         <section class="contact-section bg-light">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 fade-in">
                         <h2>Got a project or challenge you'd like to discuss?</h2>
                         <p>Leave your email and a brief message below — whether it's a technical question, product query, or a specific issue you're facing, we'll get back to you shortly with no obligation.</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 fade-in">
                         <form class="contact-form" action="submit-form.php" method="post">
                             <div class="form-group">
                                 <label for="fname">First Name (required)</label>
@@ -93,16 +96,16 @@
         <!-- Article Section -->
         <section class="article-section">
             <div class="container">
-                <div class="article-header">
+                <div class="article-header fade-in">
                     <h2>KP Acoustics in conversation with MP Films</h2>
                     <p class="subtitle">In this article, KP Acoustics interviews our MD Richard King</p>
                 </div>
                 
                 <div class="article-content">
-                    <div class="article-image">
+                    <div class="article-image fade-in-left">
                         <img src="images/interview.jpg" alt="Richard King, Managing Director of MP Films">
                     </div>
-                    <div class="article-text">
+                    <div class="article-text fade-in-right">
                         <p>Dedicated to achieving the perfect harmony of sound and silence in the world of boat building, Marine Protective Films (MP Films) provides state-of-the-art finishing materials and technical solutions for the maritime industry. At KP Acoustics Group, our expert team has been fortunate to work closely with MP Films to support their clients' needs in achieving the perfect acoustic balance that seamlessly blends luxury with safety on a variety of marine vessels. To take a deeper look into life at MP Films, Richard King, Managing Director at MP Films shares insight into his role, the common problems the business solves for clients and what is on the horizon within the marine material industry.</p>
                         
                         <p>Alongside MP Films, the exclusive UK supplier of Nitto's leading Hexadamp noise and vibration reduction products, we're on a mission to provide our clients with comprehensive acoustic design, sound insulation investigations, noise at work assessments, noise impact assessments and more. We spoke to the driving force behind MP Films to give you the inside scoop on their journey so far.</p>
@@ -139,7 +142,7 @@
         <!-- CTA Section -->
         <section class="cta-section">
             <div class="container">
-                <div class="cta-content">
+                <div class="cta-content fade-in">
                     <h2>Ready to collaborate?</h2>
                     <p>Discover how our marine protection solutions can solve your challenges.</p>
                     <a href="contact.html" class="btn btn-large">Get in Touch</a>
@@ -153,5 +156,6 @@
     
     <!-- Scripts -->
     <script src="js/script.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>
