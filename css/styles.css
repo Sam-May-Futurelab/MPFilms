@@ -78,13 +78,81 @@ img {
     height: auto;
 }
 
-/* Header Styles */
+/* Top Contact Bar */
+.top-contact-bar {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 8px 0;
+    font-size: 0.9rem;
+}
+
+.top-contact-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.top-contact-content a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.top-contact-content a:hover {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+}
+
+.top-contact-content i {
+    font-size: 1rem;
+}
+
+.top-contact-content .phone-display {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+@media (max-width: 768px) {
+    .top-contact-content {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* Header Styles - Modern Marine Theme */
 .site-header {
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background: linear-gradient(to bottom, white, #f8fcff);
     position: sticky;
     top: 0;
     z-index: 100;
+    border-bottom: none;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(10, 61, 98, 0.08); /* Subtle shadow instead of wave */
+}
+
+/* Replace animated wave with modern bottom border */
+.site-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color), var(--accent-color));
+    background-size: 200% 100%;
+    animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {background-position: 0% 50%}
+    50% {background-position: 100% 50%}
+    100% {background-position: 0% 50%}
 }
 
 .header-wrapper {
@@ -95,12 +163,12 @@ img {
 }
 
 .logo img {
-    max-height: 60px;
+    max-height: 65px;
+    transition: transform 0.3s ease;
 }
 
-.main-navigation {
-    display: flex;
-    align-items: center;
+.logo:hover img {
+    transform: translateY(-3px);
 }
 
 .nav-menu {
@@ -116,13 +184,32 @@ img {
 .nav-item a {
     font-weight: 500;
     padding: 0.5rem;
-    color: var(--text-color);
+    color: var(--primary-color);
+    position: relative;
+}
+
+/* Modern animated underline effect */
+.nav-item a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.nav-item a.active::after,
+.nav-item a:hover::after {
+    width: 100%;
 }
 
 .nav-item a.active,
 .nav-item a:hover {
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
+    color: var(--accent-color);
+    border-bottom: none;
 }
 
 .mobile-menu-toggle {
@@ -235,7 +322,7 @@ img {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 80vh;
+    height: 60vh; /* Reduced from 80vh to 60vh */
     background: url('../images/yacht-hero.jpeg');
     background-size: cover;
     background-position: center;
@@ -1127,12 +1214,12 @@ img {
 }
 
 .why-choose-products {
-    padding: 5rem 0;
+    padding: 2rem 0; /* Reduced top padding from 5rem to 3rem */
     background-color: var(--light-color);
 }
 
 .product-categories {
-    padding: 3rem 0 5rem;
+    padding: 3rem 0 3rem; /* Reduced bottom padding from 5rem to 3rem */
     background-color: var(--light-color);
 }
 
