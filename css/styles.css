@@ -1362,7 +1362,18 @@ img {
 .product-image img {
     width: 100%;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain; /* Changed from cover to contain to prevent cropping */
+    background-color: white; /* Add background to fill empty space */
+    padding: 10px; /* Add some padding around the image */
+}
+
+/* Specific adjustment for sealing materials products */
+.product-card .product-image img[src*="marine-seal"],
+.product-card .product-image img[src*="marine-seal-2"],
+.product-card .product-image img[src*="barrier-tape"] {
+    height: 280px; /* Slightly increased height for these specific products */
+    object-fit: contain;
+    padding: 15px 10px;
 }
 
 .product-details {
@@ -2325,4 +2336,11 @@ img {
 .contact-info .email-link {
     color: white;
     font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-info .email-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
 }
