@@ -2714,3 +2714,21 @@ body.sidebar-active .mobile-sidebar {
         display: none !important;
     }
 }
+
+/* Make sure article content is always visible */
+.article-section .article-header,
+.article-section .article-image,
+.article-section .article-text {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+/* Remove animation classes from article content in HTML */
+.article-section .fade-in,
+.article-section .fade-in-left,
+.article-section .fade-in-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
