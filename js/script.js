@@ -293,3 +293,67 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// Initialize mobile menu with submenus
+document.addEventListener('DOMContentLoaded', function() {
+    // Existing code for includes and other initialization
+    
+    // Mobile menu handling with submenu support
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+    const mobileSidebar = document.querySelector('.mobile-sidebar');
+    const sidebarClose = document.querySelector('.sidebar-close');
+    
+    // Handle main mobile menu toggle
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function() {
+            document.body.classList.toggle('sidebar-active');
+            mobileToggle.querySelector('.hamburger').classList.toggle('active');
+        });
+    }
+    
+    // Handle dropdown expanders in mobile menu
+    const dropdownExpanders = document.querySelectorAll('.dropdown-expander');
+    dropdownExpanders.forEach(expander => {
+        expander.addEventListener('click', function() {
+            const parentItem = this.parentElement;
+            const dropdownMenu = parentItem.querySelector('.mobile-dropdown-menu');
+            
+            // Toggle active class
+            this.classList.toggle('active');
+            if (dropdownMenu) {
+                dropdownMenu.classList.toggle('expanded');
+            }
+            
+            // Handle nested submenus
+            const mobileSubmenuDropdowns = document.querySelectorAll('.mobile-dropdown-menu .mobile-submenu-dropdown');
+            mobileSubmenuDropdowns.forEach(submenuDropdown => {
+                const submenuExpander = submenuDropdown.querySelector('.mobile-submenu-expander');
+                if (submenuExpander) {
+                    submenuExpander.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const submenu = this.nextElementSibling;
+                        this.classList.toggle('active');
+                        if (submenu) {
+                            submenu.classList.toggle('active');
+                        }
+                    });
+                }
+            });
+        });
+    });
+    
+    // Handle sidebar close
+    if (sidebarClose && mobileOverlay) {
+        sidebarClose.addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+    }
+    
+    function closeMobileMenu() {
+        document.body.classList.remove('sidebar-active');
+        if (mobileToggle) {
+            mobileToggle.querySelector('.hamburger').classList.remove('active');
+        }
+    }
+});
