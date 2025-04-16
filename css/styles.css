@@ -276,7 +276,6 @@ img {
 .dropdown-menu a:hover {
     background-color: #f5f5f5;
     color: var(--primary-color);
-    padding-left: 1.8rem;
 }
 
 /* Mobile Dropdown Adjustments */
@@ -938,6 +937,18 @@ img {
     width: 16px;
 }
 
+.contact-card .card-body .contact-info a {
+    color: var(--primary-color); /* Change from white to primary color */
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-card .card-body .contact-info a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
 .address-box {
     background-color: white;
     border-radius: 8px;
@@ -1230,18 +1241,68 @@ img {
     color: white;
     padding: 6rem 0 4rem;
     text-align: center;
+    width: 100%; /* Ensure full width */
+    min-height: 50vh; /* Add minimum height */
 }
 
 .surface-protection-banner {
-    background: linear-gradient(rgba(10, 61, 98, 0.8), rgba(10, 61, 98, 0.8)), url('../images/surface-protection-banner.jpg');
+    background: url('../images/surface-protection-banner.png');
+    background-size: cover;
+    background-position: center;
+    background-color: var(--primary-color);
+    position: relative;
+    max-width: none;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Add subtle gradient overlay for better text visibility */
+.surface-protection-banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(10, 61, 98, 0.3), rgba(10, 61, 98, 0.4));
+    z-index: 1;
+}
+
+/* Ensure text stays on top of the overlay */
+.surface-protection-banner .container {
+    position: relative;
+    z-index: 2;
+    padding-top: 4rem; /* Add additional top padding to push content down */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    min-height: 40vh; /* Ensure enough height for vertical centering */
+}
+
+.surface-protection-banner h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    font-size: 2.5rem;
+    color: white; /* Explicitly set text color to white */
+    margin-bottom: 1.5rem; /* Increase spacing between title and breadcrumb */
+}
+
+.surface-protection-banner .breadcrumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    border-radius: 6px;
 }
 
 .tapes-banner {
-    background: linear-gradient(rgba(10, 61, 98, 0.8), rgba(10, 61, 98, 0.8)), url('../images/tapes-banner.jpg');
+    background: url('../images/tapes-banner.png'); /* Changed from gradient overlay + jpg to direct png */
+    background-size: cover;
+    background-position: center;
 }
 
 .sealing-materials-banner {
-    background: linear-gradient(rgba(10, 61, 98, 0.8), rgba(10, 61, 98, 0.8)), url('../images/sealing-materials-banner.jpg');
+    background: url('../images/sealing-materials-banner.png'); /* Changed from gradient overlay + jpg to direct png */
+    background-size: cover;
+    background-position: center;
 }
 
 .category-intro {
@@ -1260,6 +1321,19 @@ img {
     width: 100%;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.category-intro-image img[src*="surface-protection-detail.png"] {
+    max-width: 65%;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Add styling for tapes detail image */
+.category-intro-image img[src*="tapes-detail.png"] {
+    max-width: 65%;  /* Same size as the surface protection image */
+    margin: 0 auto;
+    display: block;
 }
 
 .product-showcase {
@@ -1458,11 +1532,13 @@ img {
 }
 
 .related-product-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+    width: auto;  /* Change from 100% to auto */
+    max-width: 90%;  /* Constrain to 90% of container width */
+    height: 160px;  /* Reduced from 180px to 160px */
+    object-fit: contain;  /* Change from cover to contain to maintain aspect ratio */
     border-radius: 4px;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem;  /* Center the image with auto margins */
+    display: block;  /* Ensure block display for margin auto to work */
 }
 
 .related-product-card h3 {
