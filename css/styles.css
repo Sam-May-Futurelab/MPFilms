@@ -22,7 +22,10 @@
     scrollbar-color: #0a3d62 #f1f2f6;
 }
 
-html {
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%; /* Ensure width is constrained */
+    position: relative; /* Needed for proper overflow handling */
     scroll-behavior: smooth;
 }
 
