@@ -161,4 +161,26 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollProgress.style.height = `${3 + waveOffset}px`;
         });
     }
+    
+    // Back to Top Button Functionality
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    if (backToTopButton) {
+        // Show button when user scrolls down 300px
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        // Scroll to top when button is clicked
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });
