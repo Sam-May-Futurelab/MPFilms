@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Setup dropdown for mobile
             setupMobileDropdowns();
+            
+            // Set up mobile sidebar menu
+            setupMobileSidebar();
         }
         
         if (footerElement) {
@@ -32,65 +35,68 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup mobile dropdowns after header is loaded
     function setupMobileDropdowns() {
-        const dropdowns = document.querySelectorAll('.nav-item.dropdown');
-        
-        dropdowns.forEach(dropdown => {
-            // Create toggle button for mobile
-            const toggleBtn = document.createElement('button');
-            toggleBtn.className = 'dropdown-toggle-mobile';
-            toggleBtn.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
-            toggleBtn.setAttribute('aria-label', 'Toggle Dropdown');
+        // Only run this setup on desktop screens
+        if (window.innerWidth > 768) {
+            const dropdowns = document.querySelectorAll('.nav-item.dropdown');
             
-            // Only add toggle button on mobile view
-            if (window.innerWidth <= 768) {
-                dropdown.appendChild(toggleBtn);
-            }
-            
-            // Handle dropdown toggle on mobile
-            toggleBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const dropdownMenu = this.parentNode.querySelector('.dropdown-menu');
-                dropdownMenu.classList.toggle('active');
+            dropdowns.forEach(dropdown => {
+                // Create toggle button for mobile
+                const toggleBtn = document.createElement('button');
+                toggleBtn.className = 'dropdown-toggle-mobile';
+                toggleBtn.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
+                toggleBtn.setAttribute('aria-label', 'Toggle Dropdown');
                 
-                // Toggle icon
-                const icon = this.querySelector('i');
-                icon.classList.toggle('fa-chevron-down');
-                icon.classList.toggle('fa-chevron-up');
-            });
-            
-            // Handle window resize
-            window.addEventListener('resize', function() {
+                // Only add toggle button on mobile view
                 if (window.innerWidth <= 768) {
-                    if (!dropdown.querySelector('.dropdown-toggle-mobile')) {
-                        dropdown.appendChild(toggleBtn.cloneNode(true));
-                        setupToggleListeners();
+                    dropdown.appendChild(toggleBtn);
+                }
+                
+                // Handle dropdown toggle on mobile
+                toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdownMenu = this.parentNode.querySelector('.dropdown-menu');
+                    dropdownMenu.classList.toggle('active');
+                    
+                    // Toggle icon
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                });
+                
+                // Handle window resize
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth <= 768) {
+                        if (!dropdown.querySelector('.dropdown-toggle-mobile')) {
+                            dropdown.appendChild(toggleBtn.cloneNode(true));
+                            setupToggleListeners();
+                        }
+                    } else {
+                        const mobileToggle = dropdown.querySelector('.dropdown-toggle-mobile');
+                        if (mobileToggle) {
+                            mobileToggle.remove();
+                        }
                     }
-                } else {
-                    const mobileToggle = dropdown.querySelector('.dropdown-toggle-mobile');
-                    if (mobileToggle) {
-                        mobileToggle.remove();
-                    }
+                });
+                
+                function setupToggleListeners() {
+                    const toggles = document.querySelectorAll('.dropdown-toggle-mobile');
+                    toggles.forEach(toggle => {
+                        toggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const dropdownMenu = this.parentNode.querySelector('.dropdown-menu');
+                            dropdownMenu.classList.toggle('active');
+                            
+                            // Toggle icon
+                            const icon = this.querySelector('i');
+                            icon.classList.toggle('fa-chevron-down');
+                            icon.classList.toggle('fa-chevron-up');
+                        });
+                    });
                 }
             });
-            
-            function setupToggleListeners() {
-                const toggles = document.querySelectorAll('.dropdown-toggle-mobile');
-                toggles.forEach(toggle => {
-                    toggle.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const dropdownMenu = this.parentNode.querySelector('.dropdown-menu');
-                        dropdownMenu.classList.toggle('active');
-                        
-                        // Toggle icon
-                        const icon = this.querySelector('i');
-                        icon.classList.toggle('fa-chevron-down');
-                        icon.classList.toggle('fa-chevron-up');
-                    });
-                });
-            }
-        });
+        }
     }
     
     // Feature toggles for product cards
@@ -206,5 +212,84 @@ document.addEventListener('DOMContentLoaded', function() {
             cookieConsent.style.transition = 'bottom 0.5s ease';
             cookieConsent.style.bottom = '-100%';
         });
+    }
+    
+    // Mobile Sidebar Menu Functionality
+    function setupMobileSidebar() {
+        // Mobile menu toggle button
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        // Mobile sidebar elements
+        const mobileSidebar = document.querySelector('.mobile-sidebar');
+        const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+        const closeButton = document.querySelector('.sidebar-close');
+        
+        if (mobileMenuToggle && mobileSidebar) {
+            // Toggle sidebar when clicking hamburger button
+            mobileMenuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                document.body.classList.toggle('sidebar-active');
+                this.querySelector('.hamburger').classList.toggle('active');
+            });
+            
+            // Close sidebar when clicking overlay
+            if (mobileOverlay) {
+                mobileOverlay.addEventListener('click', function() {
+                    document.body.classList.remove('sidebar-active');
+                    mobileMenuToggle.querySelector('.hamburger').classList.remove('active');
+                });
+            }
+            
+            // Close sidebar when clicking close button
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    document.body.classList.remove('sidebar-active');
+                    mobileMenuToggle.querySelector('.hamburger').classList.remove('active');
+                });
+            }
+            
+            // Handle clicks outside menu to close it
+            document.addEventListener('click', function(e) {
+                // Only process if sidebar is active and screen width is mobile
+                if (document.body.classList.contains('sidebar-active') && window.innerWidth <= 768) {
+                    // Check if click is outside both mobile toggle and sidebar
+                    if (!mobileSidebar.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                        document.body.classList.remove('sidebar-active');
+                        mobileMenuToggle.querySelector('.hamburger').classList.remove('active');
+                    }
+                }
+            });
+            
+            // Handle mobile dropdown menus
+            const dropdownExpanders = document.querySelectorAll('.dropdown-expander');
+            dropdownExpanders.forEach(expander => {
+                expander.addEventListener('click', function() {
+                    // Toggle active class on expander button
+                    this.classList.toggle('active');
+                    
+                    // Find and toggle the dropdown menu
+                    const dropdownMenu = this.parentNode.querySelector('.mobile-dropdown-menu');
+                    if (dropdownMenu) {
+                        dropdownMenu.classList.toggle('expanded');
+                    }
+                });
+            });
+            
+            // Close sidebar when pressing escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && document.body.classList.contains('sidebar-active')) {
+                    document.body.classList.remove('sidebar-active');
+                    mobileMenuToggle.querySelector('.hamburger').classList.remove('active');
+                }
+            });
+            
+            // Close sidebar when window is resized to desktop size
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && document.body.classList.contains('sidebar-active')) {
+                    document.body.classList.remove('sidebar-active');
+                    mobileMenuToggle.querySelector('.hamburger').classList.remove('active');
+                }
+            });
+        }
     }
 });
