@@ -535,13 +535,14 @@ img {
 }
 
 .btn-outline-light {
-    background: transparent;
+    background: black; /* Changed from transparent to black */
     border: 2px solid white;
     color: white;
 }
 
 .btn-outline-light:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.8); /* Darker black on hover */
+    color: white;
 }
 
 /* Features Section */
@@ -1172,6 +1173,16 @@ img {
     
     .about-image {
         order: -1;
+    }
+    
+    /* Add Pendennis partnership mobile styling */
+    .partnership-content {
+        flex-direction: column !important;
+    }
+    
+    .partnership-image {
+        order: -1 !important;
+        margin-bottom: 2rem;
     }
     
     .contact-section .col-md-6 {
