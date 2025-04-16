@@ -183,4 +183,28 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Cookie Consent Functionality
+    const cookieConsent = document.getElementById('cookie-consent');
+    const acceptButton = document.getElementById('cookie-accept');
+    
+    if (cookieConsent && acceptButton) {
+        // Check if user has already accepted cookies
+        if (!localStorage.getItem('cookiesAccepted')) {
+            // Show the cookie consent popup with a slight delay
+            setTimeout(() => {
+                cookieConsent.classList.add('active');
+            }, 1000);
+        }
+        
+        // Handle accept button click
+        acceptButton.addEventListener('click', function() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieConsent.classList.remove('active');
+            
+            // Optional: Add animation before removal
+            cookieConsent.style.transition = 'bottom 0.5s ease';
+            cookieConsent.style.bottom = '-100%';
+        });
+    }
 });
