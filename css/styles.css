@@ -1775,6 +1775,13 @@ img {
         height: 300px;
     }
     
+    /* Prevent image cropping in category cards */
+    .category-image img {
+        height: 100%;
+        object-fit: contain;
+        padding: 15px;
+    }
+    
     .products-grid {
         grid-template-columns: 1fr;
     }
@@ -1791,6 +1798,17 @@ img {
     
     .benefit-item {
         padding: 1.5rem;
+    }
+    
+    /* Additional fixes for tapes-large and similar images */
+    .category-image {
+        height: 250px; /* Reduce height on smaller screens */
+    }
+    
+    .category-image img[src*="-large.png"] {
+        max-height: 100%;
+        object-fit: contain;
+        padding: 10px 0;
     }
 }
 
