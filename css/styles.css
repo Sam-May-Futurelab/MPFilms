@@ -1445,6 +1445,11 @@ img {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Add text shadow for better visibility */
 }
 
+.product-category-banner.no-overlay:before {
+    background-color: transparent !important;
+    opacity: 0 !important;
+}
+
 .category-intro {
     padding: 5rem 0;
     background-color: white;
