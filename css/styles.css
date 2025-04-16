@@ -547,12 +547,87 @@ img {
 
 /* About Page Styles */
 .page-banner {
-    background: linear-gradient(rgba(10, 61, 98, 0.8), rgba(10, 61, 98, 0.8)), url('../images/yacht-banner.jpg');
+    background: url('../images/yacht-banner.jpeg');
     background-size: cover;
     background-position: center;
     color: white;
-    padding: 6rem 0 4rem;
+    padding: 10rem 0 8rem; /* Increased from 6rem 0 4rem to show more of the image */
     text-align: center;
+    min-height: 50vh; /* Added minimum height to ensure the banner takes up more screen space */
+}
+
+/* Make About Us title white */
+.page-banner h1 {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* Add text shadow for better visibility */
+    font-weight: 700;
+    margin-bottom: 1.2rem; /* Add a bit more space before breadcrumbs */
+}
+
+/* Improved visibility for breadcrumb navigation on About page */
+.page-banner .breadcrumb {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.4); /* Dark semi-transparent background */
+    display: inline-flex;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.page-banner .breadcrumb-item,
+.page-banner .breadcrumb-item + .breadcrumb-item::before {
+    color: white; /* Ensuring good contrast */
+}
+
+.page-banner .breadcrumb-item a {
+    color: var(--accent-color);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    font-weight: 600;
+}
+
+.page-banner .breadcrumb-item a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Product Page Styles */
+.product-page .page-banner {
+    background: url('../images/product-banner.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Contact Page Styles */
+.contact-page .page-banner {
+    background: url('../images/contact-banner.png');
+    background-size: cover;
+    background-position: center 30%;
+}
+
+/* Improved visibility for breadcrumb navigation */
+.contact-page .page-banner .breadcrumb {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.4); /* Dark semi-transparent background */
+    display: inline-flex;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.contact-page .page-banner .breadcrumb-item,
+.contact-page .page-banner .breadcrumb-item + .breadcrumb-item::before {
+    color: white; /* Ensuring good contrast */
+}
+
+.contact-page .page-banner .breadcrumb-item a {
+    color: var(--accent-color);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    font-weight: 600;
+}
+
+.contact-page .page-banner .breadcrumb-item a:hover {
+    color: white;
+    text-decoration: underline;
 }
 
 .breadcrumb {
