@@ -1439,6 +1439,37 @@ img {
     background-position: center;
 }
 
+.tapes-banner:before {
+    display: none; /* Completely remove the overlay for tapes banner */
+}
+
+.tapes-banner .container {
+    position: relative;
+    z-index: 10; /* Ensure the container and its contents are above any other elements */
+}
+
+.tapes-banner .breadcrumb {
+    position: relative;
+    z-index: 15; /* Make breadcrumb even higher in z-index stack */
+    background-color: rgba(0, 0, 0, 0.5); /* Add background for better visibility */
+    display: inline-flex;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.tapes-banner .breadcrumb-item a {
+    position: relative; /* Ensure links have their own stacking context */
+    z-index: 20; /* Even higher z-index for the actual links */
+    color: white;
+    text-decoration: underline;
+    font-weight: 500;
+    padding: 2px 4px; /* Add some padding to increase clickable area */
+}
+
+.tapes-banner .breadcrumb-item a:hover {
+    color: #60a3bc; /* Accent color for hover state */
+}
+
 .sealing-materials-banner {
     background: url('../images/sealing-materials-banner.png'); /* Changed from gradient overlay + jpg to direct png */
     background-size: cover;
