@@ -266,7 +266,12 @@
                 Give us a call on +44 (0)1326 333640 or +44 (0)7891 628318 — we'd be happy to answer any questions and explore how we can support your needs.</p><br>
                 
                 <div class="contact-form">
-                    <form id="contactForm" action="submit-form.php" method="post">
+                    <form id="contactForm" action="https://formsubmit.co/sam@futurelab.solutions" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="New Form Submission from MPFilms Home Page">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        
                         <div class="form-group">
                             <label for="name" class="form-label">Name (required)</label>
                             <input type="text" id="name" name="name" class="form-control" required>
