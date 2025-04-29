@@ -87,7 +87,12 @@
                         <p>Leave your email and a brief message below — whether it's a technical question, product query, or a specific issue you're facing, we'll get back to you shortly with no obligation.</p>
                     </div>
                     <div class="col-md-6 fade-in">
-                        <form class="contact-form" action="submit-form.php" method="post">
+                        <form class="contact-form" action="https://formsubmit.co/sam@futurelab.solutions" method="POST">
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_subject" value="New Form Submission from MPFilms About Page">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            
                             <div class="form-group">
                                 <label for="fname">First Name (required)</label>
                                 <input type="text" id="fname" name="fname" class="form-control" required>
