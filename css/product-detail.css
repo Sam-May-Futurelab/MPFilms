@@ -341,6 +341,40 @@
     transition: transform 0.3s ease;
 }
 
+/* FAQ Toggle Button Styling */
+.faq-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    width: auto;
+    height: auto;
+    outline: none;
+}
+
+.faq-toggle:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.faq-toggle i {
+    font-size: 16px;
+    color: var(--accent-color, #60a3bc);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.faq-toggle:hover i {
+    color: var(--primary-color, #0a3d62);
+}
+
+.faq-item.active .faq-question .faq-toggle i {
+    transform: rotate(180deg);
+}
+
 .faq-item.active .faq-question i {
     transform: rotate(180deg);
 }

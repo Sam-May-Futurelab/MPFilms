@@ -4,9 +4,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const headerElement = document.querySelector('#header-include');
         const footerElement = document.querySelector('#footer-include');
         
-        if (headerElement) {
-            const headerResponse = await fetch('includes/header.html');
+        // Determine the correct path based on current location
+        const isInSubfolder = window.location.pathname.includes('/products/');
+        const basePath = isInSubfolder ? '../' : '';
+          if (headerElement) {
+            const headerResponse = await fetch(`${basePath}includes/header.html`);
             headerElement.innerHTML = await headerResponse.text();
+            
+            // Fix paths for subfolder pages
+            if (isInSubfolder) {
+                adjustHeaderPaths(headerElement);
+            }
             
             // Setup mobile menu toggle
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -24,14 +32,47 @@ document.addEventListener('DOMContentLoaded', function() {
             // Set up mobile sidebar menu
             setupMobileSidebar();
         }
-        
-        if (footerElement) {
-            const footerResponse = await fetch('includes/footer.html');
+          if (footerElement) {
+            const footerResponse = await fetch(`${basePath}includes/footer.html`);
             footerElement.innerHTML = await footerResponse.text();
         }
     };
     
     includeComponents();
+    
+    // Function to adjust header paths for subfolder pages
+    function adjustHeaderPaths(headerElement) {
+        // Fix logo image path
+        const logoImg = headerElement.querySelector('.logo img');
+        if (logoImg) {
+            logoImg.src = '../images/mpf-logo.png';
+        }
+        
+        // Fix logo link
+        const logoLink = headerElement.querySelector('.logo a');
+        if (logoLink) {
+            logoLink.href = '../index.html';
+        }
+        
+        // Fix navigation links
+        const navLinks = headerElement.querySelectorAll('a[href]');
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            // Only adjust relative paths, not absolute ones or anchors
+            if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
+                // If the link doesn't already start with '../', add it
+                if (!href.startsWith('../')) {
+                    link.href = '../' + href;
+                }
+            }
+        });
+        
+        // Fix mobile sidebar logo
+        const sidebarLogoImg = headerElement.querySelector('.sidebar-logo img');
+        if (sidebarLogoImg) {
+            sidebarLogoImg.src = '../images/mpf-logo.png';
+        }
+    }
     
     // Setup mobile dropdowns after header is loaded
     function setupMobileDropdowns() {
@@ -132,14 +173,41 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-    
-    // FAQ accordion functionality
+      // FAQ accordion functionality
     const faqQuestions = document.querySelectorAll('.faq-question');
+    const faqToggles = document.querySelectorAll('.faq-toggle');
     
+    // Handle clicks on FAQ questions (existing functionality)
     if (faqQuestions.length > 0) {
         faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
+            question.addEventListener('click', (e) => {
+                // Prevent double handling if click is on toggle button
+                if (e.target.closest('.faq-toggle')) {
+                    return;
+                }
+                
                 const faqItem = question.parentElement;
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current FAQ item
+                faqItem.classList.toggle('active');
+            });
+        });
+    }
+    
+    // Handle clicks on FAQ toggle buttons
+    if (faqToggles.length > 0) {
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent event bubbling
+                
+                const faqItem = toggle.closest('.faq-item');
                 
                 // Close all other FAQ items
                 document.querySelectorAll('.faq-item').forEach(item => {

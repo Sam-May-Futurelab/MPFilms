@@ -1580,6 +1580,19 @@ img {
     margin-bottom: 0.8rem;
 }
 
+/* Product title links styling */
+.product-details h3 a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+}
+
+.product-details h3 a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
 .product-description {
     margin-bottom: 1rem;
 }
@@ -3242,6 +3255,7 @@ body.sidebar-active .mobile-sidebar {
 
 /* Key Benefits Section Enhancements */
 .key-benefits-section {
+    padding-top: 3rem; /* Add top padding for better spacing */
     padding-bottom: 4rem; /* Increase section bottom padding */
 }
 
